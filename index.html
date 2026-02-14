@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TRK PRIME — Digital Experience</title>
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;800&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+
+:root{
+  --bg:#050510;
+  --text:#ffffff;
+  --muted:#aaaaaa;
+  --card:rgba(255,255,255,0.05);
+  --cardBorder:rgba(255,255,255,0.08);
+  --line:rgba(255,255,255,0.1);
+  --accentA:#00f0ff;
+  --accentB:#ff00c8;
+}
+
+body[data-theme="light"]{
+  --bg:#f7f7ff;
+  --text:#0b0b12;
+  --muted:#4a4a66;
+  --card:rgba(10,10,20,0.06);
+  --cardBorder:rgba(10,10,20,0.12);
+  --line:rgba(10,10,20,0.12);
+}
+
+body{
+  font-family:'Inter',sans-serif;
+  background:var(--bg);
+  color:var(--text);
+  overflow-x:hidden;
+}
+
+/* Animated Gradient Background */
+body::before{
+  content:"";
+  position:fixed;
+  width:200%;
+  height:200%;
+  background:
+    radial-gradient(circle at 30% 30%,#6a00ff,transparent 40%),
+    radial-gradient(circle at 70% 60%,#00f0ff,transparent 40%),
+    radial-gradient(circle at 50% 80%,#ff007a,transparent 40%);
+  animation:moveBg 20s linear infinite;
+  z-index:-2;
+  opacity:0.95;
+}
+
+body[data-theme="light"]::before{
+  opacity:0.35;
+  filter:saturate(1.15);
+}
+
+@keyframes moveBg{
+  0%{transform:translate(0,0)}
+  50%{transform:translate(-25%,-25%)}
+  100%{transform:translate(0,0)}
+}
+
+/* Loader */
+.loader{
+  position:fixed;
+  inset:0;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  background:var(--bg);
+  z-index:9999;
+}
+
+.loader-inner{
+  text-align:center;
+  padding:28px 28px;
+  border-radius:24px;
+  background:linear-gradient(180deg, rgba(255,255,255,0.06), rgba(255,255,255,0.02));
+  border:1px solid var(--cardBorder);
+  backdrop-filter:blur(16px);
+  min-width:min(520px, 92vw);
+}
+
+.loader-logo{
+  font-family:'Orbitron';
+  font-size:42px;
+  letter-spacing:6px;
+  line-height:1.1;
+  background:linear-gradient(90deg,var(--accentA),var(--accentB));
+  -webkit-background-clip:text;
+  color:transparent;
+}
+
+.loader-sub{
+  margin-top:12px;
+  color:var(--muted);
+  font-size:14px;
+  letter-spacing:1px;
+}
+
+.loader-bar{
+  margin:18px auto 0;
+  width:min(360px, 85%);
+  height:10px;
+  border-radius:999px;
+  overflow:hidden;
+  border:1px solid var(--cardBorder);
+  background:rgba(255,255,255,0.03);
+}
+
+.loader-bar > span{
+  display:block;
+  height:100%;
+  width:30%;
+  border-radius:999px;
+  background:linear-gradient(90deg,var(--accentA),var(--accentB));
+}
+
+header{
+  padding:28px 8%;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  position:sticky;
+  top:0;
+  z-index:50;
+  backdrop-filter:blur(14px);
+  background:linear-gradient(180deg, rgba(0,0,0,0.22), rgba(0,0,0,0));
+  border-bottom:1px solid rgba(255,255,255,0.06);
+}
+
+body[data-theme="light"] header{
+  background:linear-gradient(180deg, rgba(255,255,255,0.72), rgba(255,255,255,0));
+  border-bottom:1px solid rgba(10,10,20,0.10);
+}
+
+.logo{
+  font-family:'Orbitron';
+  font-size:22px;
+  letter-spacing:3px;
+  background:linear-gradient(90deg,var(--accentA),var(--accentB));
+  -webkit-background-clip:text;
+  color:transparent;
+}
+
+.header-actions{display:flex;align-items:center;gap:12px}
+
+.theme-toggle{
+  border:none;
+  cursor:pointer;
+  padding:10px 14px;
+  border-radius:999px;
+  background:rgba(255,255,255,0.06);
+  border:1px solid var(--cardBorder);
+  color:var(--text);
+  font-weight:600;
+  transition:transform .2s ease, box-shadow .2s ease, background .2s ease;
+}
+
+.theme-toggle:hover{transform:translateY(-1px); box-shadow:0 0 18px rgba(0,240,255,0.18)}
+
+.hero{
+  padding:110px 8% 80px;
+  max-width:980px;
+}
+
+.hero h1{
+  font-family:'Orbitron';
+  font-size:clamp(40px, 6vw, 68px);
+  line-height:1.05;
+}
+
+.hero p{
+  margin-top:18px;
+  color:var(--muted);
+  font-size:18px;
+}
+
+.btn{
+  display:inline-block;
+  margin-top:34px;
+  padding:16px 32px;
+  border-radius:50px;
+  background:linear-gradient(90deg,var(--accentA),var(--accentB));
+  color:#050510;
+  font-weight:700;
+  text-decoration:none;
+  transition:.3s;
+}
+
+.btn:hover{
+  transform:scale(1.05);
+  box-shadow:0 0 30px rgba(255,0,200,.45);
+}
+
+section{
+  padding:90px 8%;
+}
+
+.section-title{
+  font-family:'Orbitron';
+  font-size:34px;
+  margin-bottom:46px;
+}
+
+.grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+  gap:26px;
+}
+
+.card{
+  padding:28px;
+  border-radius:22px;
+  background:var(--card);
+  backdrop-filter:blur(20px);
+  border:1px solid var(--cardBorder);
+  transition:.35s;
+  position:relative;
+  overflow:hidden;
+}
+
+.card::before{
+  content:"";
+  position:absolute;
+  inset:-1px;
+  background:radial-gradient(circle at 20% 10%, rgba(0,240,255,0.22), transparent 45%),
+             radial-gradient(circle at 80% 90%, rgba(255,0,200,0.18), transparent 45%);
+  opacity:0;
+  transition:opacity .35s ease;
+  pointer-events:none;
+}
+
+.card:hover::before{opacity:1}
+
+.card:hover{
+  transform:translateY(-10px) scale(1.02);
+  border-color:rgba(0,240,255,0.55);
+}
+
+.card a{
+  color:var(--accentA);
+  text-decoration:none;
+  font-weight:700;
+}
+
+footer{
+  padding:54px 8%;
+  border-top:1px solid var(--line);
+  text-align:center;
+  color:var(--muted);
+}
+
+.contact{margin-top:18px;font-size:16px}
+
+.glow{
+  position:fixed;
+  width:320px;
+  height:320px;
+  background:var(--accentA);
+  filter:blur(210px);
+  opacity:.14;
+  pointer-events:none;
+  transition:transform .2s ease;
+  z-index:-1;
+}
+
+/* Scroll-storytelling helper: subtle section divider */
+.section-divider{
+  height:1px;
+  width:100%;
+  background:linear-gradient(90deg, transparent, var(--line), transparent);
+  margin:0;
+}
+</style>
+</head>
+<body>
+
+<!-- Loader TRK -->
+<div class="loader" id="loader" aria-hidden="true">
+  <div class="loader-inner">
+    <div class="loader-logo" id="loaderLogo">TRK PRIME</div>
+    <div class="loader-sub">Chargement de l’expérience…</div>
+    <div class="loader-bar"><span id="loaderBar"></span></div>
+  </div>
+</div>
+
+
+<div class="glow" id="glow"></div>
+
+<header>
+  <div class="logo">TRK PRIME</div>
+  <div class="header-actions">
+    <button class="theme-toggle" id="themeToggle" aria-label="Basculer le thème">🌙 / ☀️</button>
+  </div>
+</header>
+
+<section class="hero">
+<h1>Créer. Marquer.<br>Dominer le Web.</h1>
+<p>Design expérimental • Expériences immersives • Interfaces nouvelle génération.<br>
+Chaque projet est pensé pour sortir du cadre classique.</p>
+<a href="#projects" class="btn">Voir les Projets</a>
+</section>
+
+<section id="projects">
+<h2 class="section-title">Projets Web</h2>
+<div class="grid">
+<div class="card"><a href="https://beaujourgael.github.io/template-tech/" target="_blank">Template Tech</a></div>
+<div class="card"><a href="https://beaujourgael.github.io/template-luxe/" target="_blank">Template Luxe</a></div>
+<div class="card"><a href="https://beaujourgael.github.io/template-creative/" target="_blank">Template Creative</a></div>
+<div class="card"><a href="https://beaujourgael.github.io/template-crypto/" target="_blank">Template Crypto</a></div>
+</div>
+</section>
+
+<section>
+<h2 class="section-title">Branding</h2>
+<div class="grid">
+<div class="card"><a href="https://beaujourgael.github.io/Site-branding-synapse/" target="_blank">Synapse</a></div>
+<div class="card"><a href="https://beaujourgael.github.io/Site-brandingraw-humain/" target="_blank">Raw Humain</a></div>
+</div>
+</section>
+
+<section>
+<h2 class="section-title">UI / UX</h2>
+<div class="grid">
+<div class="card"><a href="https://beaujourgael.github.io/Site-UI-UX-Landing-page-SaaS/" target="_blank">SaaS Landing</a></div>
+<div class="card"><a href="https://beaujourgael.github.io/Site-UI-UX-Dashboard/" target="_blank">Dashboard UI</a></div>
+</div>
+</section>
+
+<section>
+<h2 class="section-title">Site Actif</h2>
+<div class="grid">
+<div class="card"><a href="https://swetybeauty.fr/" target="_blank">Swety Beauty</a></div>
+</div>
+</section>
+
+<footer>
+TRK PRIME © 2026 — Expérience Digitale
+<div class="contact">
+📩 TRK.prime971@gmail.com<br>
+📱 WhatsApp : 07 44 91 39 12
+</div>
+</footer>
+
+<!-- GSAP (CDN) -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+
+<script>
+// Glow follow
+const glow = document.getElementById('glow');
+document.addEventListener('mousemove', e => {
+  glow.style.transform = `translate(${e.clientX -160}px, ${e.clientY -160}px)`;
+});
+
+// Theme (dark/light) with persistence
+const themeToggle = document.getElementById('themeToggle');
+const savedTheme = localStorage.getItem('trk_theme');
+if(savedTheme){
+  document.body.setAttribute('data-theme', savedTheme);
+}
+
+function updateToggleIcon(){
+  const t = document.body.getAttribute('data-theme') || 'dark';
+  themeToggle.textContent = (t === 'light') ? '☀️ / 🌙' : '🌙 / ☀️';
+}
+updateToggleIcon();
+
+themeToggle.addEventListener('click', () => {
+  const current = document.body.getAttribute('data-theme') || 'dark';
+  const next = (current === 'light') ? 'dark' : 'light';
+  if(next === 'dark') document.body.removeAttribute('data-theme');
+  else document.body.setAttribute('data-theme', 'light');
+  localStorage.setItem('trk_theme', next);
+  updateToggleIcon();
+  gsap.fromTo('body', {opacity:0.92}, {opacity:1, duration:0.25, ease:'power2.out'});
+});
+
+// GSAP setup
+if (window.gsap) {
+  gsap.registerPlugin(ScrollTrigger);
+}
+
+// Loader animation (TRK)
+const loader = document.getElementById('loader');
+const loaderLogo = document.getElementById('loaderLogo');
+const loaderBar = document.getElementById('loaderBar');
+
+const tlLoader = gsap.timeline({defaults:{ease:'power3.out'}});
+
+tlLoader
+  .fromTo(loaderLogo, {y:18, opacity:0}, {y:0, opacity:1, duration:0.8})
+  .to(loaderBar, {width:'92%', duration:1.0, ease:'power2.inOut'}, 0.15)
+  // tiny "glitch" feel
+  .to(loaderLogo, {x:-6, duration:0.06, yoyo:true, repeat:5}, 0.65)
+  .to(loader, {opacity:0, duration:0.5, pointerEvents:'none'}, 1.55)
+  .set(loader, {display:'none'});
+
+// Scroll storytelling (Apple-like)
+// 1) Hero: title + paragraph + CTA entrance
+const hero = document.querySelector('.hero');
+const heroH1 = document.querySelector('.hero h1');
+const heroP = document.querySelector('.hero p');
+const heroBtn = document.querySelector('.hero .btn');
+
+gsap.set([heroH1, heroP, heroBtn], {opacity:0, y:18});
+
+gsap.to([heroH1, heroP, heroBtn], {
+  opacity:1,
+  y:0,
+  duration:0.8,
+  stagger:0.12,
+  ease:'power3.out',
+  delay:0.15
+});
+
+// 2) Sections: titles slide + cards stagger on enter
+const sections = document.querySelectorAll('section');
+sections.forEach((sec) => {
+  const title = sec.querySelector('.section-title');
+  const cards = sec.querySelectorAll('.card');
+
+  if(title){
+    gsap.fromTo(title, {opacity:0, y:18}, {
+      opacity:1,
+      y:0,
+      duration:0.65,
+      scrollTrigger:{
+        trigger: sec,
+        start:'top 75%',
+        end:'top 30%',
+        toggleActions:'play none none reverse'
+      }
+    });
+  }
+
+  if(cards && cards.length){
+    gsap.fromTo(cards, {opacity:0, y:22, scale:0.98}, {
+      opacity:1,
+      y:0,
+      scale:1,
+      duration:0.55,
+      stagger:0.10,
+      ease:'power2.out',
+      scrollTrigger:{
+        trigger: sec,
+        start:'top 70%',
+        toggleActions:'play none none reverse'
+      }
+    });
+  }
+});
+
+// 3) Subtle parallax drift on the background glow while scrolling
+ScrollTrigger.create({
+  start:0,
+  end:'max',
+  onUpdate:self => {
+    const p = self.progress;
+    glow.style.opacity = (0.10 + p * 0.08).toFixed(3);
+  }
+});
+
+</script>
+
+</body>
+</html>
