@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>TRK DESIGN — Digital Experience</title>
-<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;800&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+<title>Portfolio Beaujour Gael | Technicien Support Systèmes & Microsoft 365</title>
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;800&family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
 
@@ -28,6 +28,10 @@ body[data-theme="light"]{
   --line:rgba(10,10,20,0.12);
 }
 
+html{
+  scroll-behavior:smooth;
+}
+
 body{
   font-family:'Inter',sans-serif;
   background:var(--bg);
@@ -35,7 +39,6 @@ body{
   overflow-x:hidden;
 }
 
-/* Animated Gradient Background */
 body::before{
   content:"";
   position:fixed;
@@ -61,7 +64,6 @@ body[data-theme="light"]::before{
   100%{transform:translate(0,0)}
 }
 
-/* Loader */
 .loader{
   position:fixed;
   inset:0;
@@ -74,7 +76,7 @@ body[data-theme="light"]::before{
 
 .loader-inner{
   text-align:center;
-  padding:28px 28px;
+  padding:28px;
   border-radius:24px;
   background:linear-gradient(180deg, rgba(255,255,255,0.06), rgba(255,255,255,0.02));
   border:1px solid var(--cardBorder);
@@ -84,8 +86,8 @@ body[data-theme="light"]::before{
 
 .loader-logo{
   font-family:'Orbitron';
-  font-size:42px;
-  letter-spacing:6px;
+  font-size:38px;
+  letter-spacing:3px;
   line-height:1.1;
   background:linear-gradient(90deg,var(--accentA),var(--accentB));
   -webkit-background-clip:text;
@@ -118,7 +120,7 @@ body[data-theme="light"]::before{
 }
 
 header{
-  padding:28px 8%;
+  padding:22px 8%;
   display:flex;
   justify-content:space-between;
   align-items:center;
@@ -137,14 +139,37 @@ body[data-theme="light"] header{
 
 .logo{
   font-family:'Orbitron';
-  font-size:22px;
-  letter-spacing:3px;
+  font-size:20px;
+  letter-spacing:2px;
   background:linear-gradient(90deg,var(--accentA),var(--accentB));
   -webkit-background-clip:text;
   color:transparent;
 }
 
-.header-actions{display:flex;align-items:center;gap:12px}
+nav{
+  display:flex;
+  gap:18px;
+  flex-wrap:wrap;
+}
+
+nav a{
+  color:var(--text);
+  text-decoration:none;
+  font-size:14px;
+  opacity:.85;
+  transition:.25s;
+}
+
+nav a:hover{
+  color:var(--accentA);
+  opacity:1;
+}
+
+.header-actions{
+  display:flex;
+  align-items:center;
+  gap:12px;
+}
 
 .theme-toggle{
   border:none;
@@ -155,32 +180,64 @@ body[data-theme="light"] header{
   border:1px solid var(--cardBorder);
   color:var(--text);
   font-weight:600;
-  transition:transform .2s ease, box-shadow .2s ease, background .2s ease;
+  transition:transform .2s ease, box-shadow .2s ease;
 }
 
-.theme-toggle:hover{transform:translateY(-1px); box-shadow:0 0 18px rgba(0,240,255,0.18)}
+.theme-toggle:hover{
+  transform:translateY(-1px);
+  box-shadow:0 0 18px rgba(0,240,255,0.18);
+}
 
 .hero{
   padding:110px 8% 80px;
-  max-width:980px;
+  max-width:1200px;
+  min-height:92vh;
+  display:grid;
+  grid-template-columns:1.2fr .8fr;
+  gap:40px;
+  align-items:center;
 }
 
 .hero h1{
   font-family:'Orbitron';
-  font-size:clamp(40px, 6vw, 68px);
+  font-size:clamp(36px, 6vw, 68px);
   line-height:1.05;
 }
 
-.hero p{
+.hero .subtitle{
   margin-top:18px;
   color:var(--muted);
   font-size:18px;
+  max-width:760px;
+  line-height:1.75;
+}
+
+.hero-badges{
+  display:flex;
+  flex-wrap:wrap;
+  gap:12px;
+  margin-top:24px;
+}
+
+.badge{
+  padding:10px 16px;
+  border-radius:999px;
+  background:rgba(255,255,255,0.06);
+  border:1px solid var(--cardBorder);
+  color:var(--text);
+  font-size:14px;
+}
+
+.hero-buttons{
+  display:flex;
+  gap:16px;
+  flex-wrap:wrap;
+  margin-top:32px;
 }
 
 .btn{
   display:inline-block;
-  margin-top:34px;
-  padding:16px 32px;
+  padding:15px 28px;
   border-radius:50px;
   background:linear-gradient(90deg,var(--accentA),var(--accentB));
   color:#050510;
@@ -194,6 +251,95 @@ body[data-theme="light"] header{
   box-shadow:0 0 30px rgba(255,0,200,.45);
 }
 
+.btn-outline{
+  display:inline-block;
+  padding:15px 28px;
+  border-radius:50px;
+  border:1px solid var(--cardBorder);
+  color:var(--text);
+  text-decoration:none;
+  font-weight:700;
+  background:rgba(255,255,255,0.04);
+  transition:.3s;
+}
+
+.btn-outline:hover{
+  transform:translateY(-2px);
+  border-color:rgba(0,240,255,0.55);
+  box-shadow:0 0 20px rgba(0,240,255,0.15);
+}
+
+.hero-card{
+  padding:30px;
+  border-radius:28px;
+  background:var(--card);
+  backdrop-filter:blur(20px);
+  border:1px solid var(--cardBorder);
+  position:relative;
+  overflow:hidden;
+}
+
+.hero-card::before{
+  content:"";
+  position:absolute;
+  inset:-1px;
+  background:
+    radial-gradient(circle at 20% 20%, rgba(0,240,255,0.18), transparent 40%),
+    radial-gradient(circle at 80% 80%, rgba(255,0,200,0.14), transparent 40%);
+  pointer-events:none;
+}
+
+.profile-circle{
+  width:120px;
+  height:120px;
+  margin:0 auto 20px;
+  border-radius:50%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-family:'Orbitron';
+  font-size:32px;
+  font-weight:800;
+  background:linear-gradient(135deg,var(--accentA),var(--accentB));
+  color:#050510;
+  box-shadow:0 0 25px rgba(0,240,255,0.18);
+}
+
+.hero-card h3{
+  text-align:center;
+  font-family:'Orbitron';
+  margin-bottom:10px;
+  font-size:22px;
+}
+
+.hero-card p{
+  text-align:center;
+  color:var(--muted);
+  line-height:1.7;
+}
+
+.quick-info{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:14px;
+  margin-top:24px;
+}
+
+.info-box{
+  padding:16px;
+  border-radius:18px;
+  background:rgba(255,255,255,0.04);
+  border:1px solid var(--cardBorder);
+  text-align:center;
+}
+
+.info-box strong{
+  display:block;
+  font-size:19px;
+  margin-bottom:6px;
+  color:var(--accentA);
+}
+
 section{
   padding:90px 8%;
 }
@@ -201,7 +347,14 @@ section{
 .section-title{
   font-family:'Orbitron';
   font-size:34px;
-  margin-bottom:46px;
+  margin-bottom:18px;
+}
+
+.section-text{
+  max-width:860px;
+  color:var(--muted);
+  line-height:1.8;
+  margin-bottom:36px;
 }
 
 .grid{
@@ -239,10 +392,134 @@ section{
   border-color:rgba(0,240,255,0.55);
 }
 
+.card h3{
+  font-family:'Orbitron';
+  font-size:20px;
+  margin-bottom:12px;
+}
+
+.card p{
+  color:var(--muted);
+  line-height:1.7;
+  margin-bottom:16px;
+}
+
+.card ul{
+  padding-left:18px;
+  color:var(--muted);
+  line-height:1.7;
+}
+
+.card li{
+  margin-bottom:8px;
+}
+
 .card a{
   color:var(--accentA);
   text-decoration:none;
   font-weight:700;
+}
+
+.skills-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+  gap:22px;
+}
+
+.skill-card{
+  padding:24px;
+  border-radius:20px;
+  background:var(--card);
+  border:1px solid var(--cardBorder);
+  backdrop-filter:blur(16px);
+  transition:.3s;
+}
+
+.skill-card:hover{
+  transform:translateY(-6px);
+  border-color:rgba(255,0,200,0.35);
+}
+
+.skill-card h3{
+  font-family:'Orbitron';
+  font-size:18px;
+  margin-bottom:12px;
+}
+
+.skill-card ul{
+  list-style:none;
+}
+
+.skill-card li{
+  color:var(--muted);
+  margin-bottom:10px;
+  line-height:1.5;
+}
+
+.timeline{
+  display:grid;
+  gap:22px;
+}
+
+.timeline-item{
+  padding:24px;
+  border-radius:20px;
+  background:var(--card);
+  border:1px solid var(--cardBorder);
+  backdrop-filter:blur(16px);
+}
+
+.timeline-item h3{
+  font-family:'Orbitron';
+  font-size:18px;
+  margin-bottom:8px;
+}
+
+.timeline-item .meta{
+  color:var(--accentA);
+  font-weight:600;
+  margin-bottom:12px;
+  display:block;
+}
+
+.timeline-item p,
+.timeline-item li{
+  color:var(--muted);
+  line-height:1.7;
+}
+
+.timeline-item ul{
+  padding-left:18px;
+}
+
+.contact-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+  gap:24px;
+}
+
+.contact-card{
+  padding:26px;
+  border-radius:20px;
+  background:var(--card);
+  border:1px solid var(--cardBorder);
+  backdrop-filter:blur(18px);
+}
+
+.contact-card h3{
+  font-family:'Orbitron';
+  margin-bottom:12px;
+}
+
+.contact-card p,
+.contact-card a{
+  color:var(--muted);
+  text-decoration:none;
+  line-height:1.8;
+}
+
+.contact-card a:hover{
+  color:var(--accentA);
 }
 
 footer{
@@ -251,8 +528,6 @@ footer{
   text-align:center;
   color:var(--muted);
 }
-
-.contact{margin-top:18px;font-size:16px}
 
 .glow{
   position:fixed;
@@ -266,100 +541,412 @@ footer{
   z-index:-1;
 }
 
-/* Scroll-storytelling helper: subtle section divider */
 .section-divider{
   height:1px;
   width:100%;
   background:linear-gradient(90deg, transparent, var(--line), transparent);
-  margin:0;
+}
+
+@media (max-width: 900px){
+  header{
+    flex-direction:column;
+    gap:18px;
+  }
+
+  nav{
+    justify-content:center;
+  }
+
+  .hero{
+    grid-template-columns:1fr;
+    padding-top:90px;
+  }
+
+  .quick-info{
+    grid-template-columns:1fr;
+  }
 }
 </style>
 </head>
 <body>
 
-<!-- Loader TRK -->
 <div class="loader" id="loader" aria-hidden="true">
   <div class="loader-inner">
-    <div class="loader-logo" id="loaderLogo">TRK DESIGN</div>
-    <div class="loader-sub">Chargement de l’expérience…</div>
+    <div class="loader-logo" id="loaderLogo">Portfolio Beaujour Gael</div>
+    <div class="loader-sub">Chargement du portfolio technique…</div>
     <div class="loader-bar"><span id="loaderBar"></span></div>
   </div>
 </div>
 
-
 <div class="glow" id="glow"></div>
 
 <header>
-  <div class="logo">TRK DESIGN</div>
+  <div class="logo">Portfolio Beaujour Gael</div>
+
+  <nav>
+    <a href="#accueil">Accueil</a>
+    <a href="#apropos">À propos</a>
+    <a href="#competences">Compétences</a>
+    <a href="#experience">Expériences</a>
+    <a href="#labs">Labs</a>
+    <a href="#projects">Projets Web</a>
+    <a href="#contact">Contact</a>
+  </nav>
+
   <div class="header-actions">
     <button class="theme-toggle" id="themeToggle" aria-label="Basculer le thème">🌙 / ☀️</button>
   </div>
 </header>
 
-<section class="hero">
-<h1>Créer. Marquer.<br>Dominer le Web.</h1>
-<p>Design expérimental • Expériences immersives • Interfaces nouvelle génération.<br>
-Chaque projet est pensé pour sortir du cadre classique.</p>
-<a href="#projects" class="btn">Voir les Projets</a>
+<section class="hero" id="accueil">
+  <div>
+    <h1>Portfolio<br>Beaujour Gael</h1>
+    <p class="subtitle">
+      Technicien Support Systèmes & Microsoft 365, j’interviens sur l’assistance utilisateurs,
+      la gestion de postes Windows, l’administration Microsoft 365 et Intune, ainsi que le support
+      en environnement Active Directory, GPO et Windows Server.
+    </p>
+
+    <div class="hero-badges">
+      <span class="badge">Support N1 / N2</span>
+      <span class="badge">Microsoft 365</span>
+      <span class="badge">Intune</span>
+      <span class="badge">Active Directory</span>
+      <span class="badge">Windows Server</span>
+      <span class="badge">Virtualisation</span>
+    </div>
+
+    <div class="hero-buttons">
+      <a href="#labs" class="btn">Voir mes labs techniques</a>
+      <a href="#contact" class="btn-outline">Me contacter</a>
+    </div>
+  </div>
+
+  <div class="hero-card">
+    <div class="profile-circle">GB</div>
+    <h3>Technicien Support</h3>
+    <p>
+      Profil orienté support, exploitation et environnement Microsoft.
+      J’aime résoudre les incidents, accompagner les utilisateurs et structurer
+      des environnements techniques fiables et bien documentés.
+    </p>
+
+    <div class="quick-info">
+      <div class="info-box">
+        <strong>30</strong>
+        <span>Utilisateurs supportés</span>
+      </div>
+      <div class="info-box">
+        <strong>40</strong>
+        <span>Postes gérés</span>
+      </div>
+      <div class="info-box">
+        <strong>N1 à N3</strong>
+        <span>Support technique</span>
+      </div>
+      <div class="info-box">
+        <strong>B2</strong>
+        <span>Anglais</span>
+      </div>
+    </div>
+  </div>
 </section>
+
+<div class="section-divider"></div>
+
+<section id="apropos">
+  <h2 class="section-title">À propos</h2>
+  <p class="section-text">
+    Je suis Gaël Beaujour, technicien support orienté environnement Microsoft 365.
+    Mon parcours m’a amené à intervenir sur l’assistance utilisateurs, l’administration
+    de comptes, la gestion de parc informatique, le diagnostic d’incidents matériels,
+    systèmes et réseaux, ainsi que le déploiement et la maintenance de postes de travail.
+    Je suis également à l’aise dans l’accompagnement des usagers et l’animation d’ateliers numériques.
+  </p>
+
+  <div class="grid">
+    <div class="card">
+      <h3>Mon profil</h3>
+      <p>
+        Autonome, discret et orienté résolution de problèmes, je suis capable
+        de devenir rapidement opérationnel dans un contexte client ou en environnement interne.
+      </p>
+    </div>
+
+    <div class="card">
+      <h3>Ma spécialité</h3>
+      <p>
+        Support utilisateurs, Microsoft 365, Intune, Active Directory,
+        GPO, Windows 10/11 et administration de base des environnements serveurs.
+      </p>
+    </div>
+
+    <div class="card">
+      <h3>Ma démarche</h3>
+      <p>
+        Comprendre l’incident, diagnostiquer efficacement, résoudre proprement,
+        documenter les actions et améliorer la stabilité du poste ou du service.
+      </p>
+    </div>
+  </div>
+</section>
+
+<div class="section-divider"></div>
+
+<section id="competences">
+  <h2 class="section-title">Compétences</h2>
+  <p class="section-text">
+    Mon CV met en avant un socle de compétences centré sur le support, l’environnement Microsoft
+    et l’administration systèmes et réseaux. :contentReference[oaicite:1]{index=1}
+  </p>
+
+  <div class="skills-grid">
+    <div class="skill-card">
+      <h3>Support & Exploitation</h3>
+      <ul>
+        <li>Assistance utilisateurs N1 / N2</li>
+        <li>Diagnostic, traitement et suivi des incidents</li>
+        <li>Outils de ticketing</li>
+        <li>Préparation et déploiement de postes</li>
+      </ul>
+    </div>
+
+    <div class="skill-card">
+      <h3>Environnement Microsoft</h3>
+      <ul>
+        <li>Microsoft 365 : comptes, licences</li>
+        <li>Intune : enrôlement et configuration</li>
+        <li>Active Directory : utilisateurs et groupes</li>
+        <li>GPO : application et gestion</li>
+      </ul>
+    </div>
+
+    <div class="skill-card">
+      <h3>Systèmes & Réseaux</h3>
+      <ul>
+        <li>Windows 10 / 11</li>
+        <li>Windows Server 2019 / 2022</li>
+        <li>Gestion de parc informatique</li>
+        <li>Sauvegardes et maintenance préventive</li>
+      </ul>
+    </div>
+
+    <div class="skill-card">
+      <h3>Outils & Méthodes</h3>
+      <ul>
+        <li>Assistance à distance : AnyDesk, Teams</li>
+        <li>Documentation technique</li>
+        <li>Suivi des tickets</li>
+        <li>Approche orientée utilisateurs</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<div class="section-divider"></div>
+
+<section id="experience">
+  <h2 class="section-title">Expériences</h2>
+  <p class="section-text">
+    Mon parcours combine support informatique, médiation numérique et projet personnel de lab technique. :contentReference[oaicite:2]{index=2}
+  </p>
+
+  <div class="timeline">
+    <div class="timeline-item">
+      <h3>Technicien support informatique</h3>
+      <span class="meta">Solam Outre Mer — Octobre 2022 à Juillet 2024</span>
+      <ul>
+        <li>Support technique auprès de 30 utilisateurs, du N1 au N3</li>
+        <li>Maintenance d’un parc de 40 postes Windows et serveurs</li>
+        <li>Administration Microsoft 365 et Intune</li>
+        <li>Création et gestion des comptes utilisateurs dans Active Directory</li>
+        <li>Mise en place et gestion de GPO</li>
+        <li>Résolution d’incidents matériels, systèmes et réseaux</li>
+        <li>Assistance à distance via AnyDesk et Teams</li>
+        <li>Suivi des tickets et documentation technique</li>
+        <li>Participation à la mise en place d’Odoo</li>
+      </ul>
+    </div>
+
+    <div class="timeline-item">
+      <h3>Médiateur numérique</h3>
+      <span class="meta">Service Civique — Janvier 2025 à Juillet 2025</span>
+      <ul>
+        <li>Accompagnement des usagers dans l’utilisation des outils numériques</li>
+        <li>Assistance technique de premier niveau</li>
+        <li>Animation d’ateliers informatiques</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<div class="section-divider"></div>
+
+<section id="labs">
+  <h2 class="section-title">Labs Techniques</h2>
+  <p class="section-text">
+    Cette section met en avant deux laboratoires techniques inspirés de mon profil, de mes compétences
+    et de mon projet personnel d’administration serveur mentionné dans mon CV. :contentReference[oaicite:3]{index=3}
+  </p>
+
+  <div class="grid">
+    <div class="card">
+      <h3>Lab 01 — Administration serveur virtualisé</h3>
+      <p>
+        Mise en place d’un environnement virtualisé pour simuler une infrastructure d’entreprise
+        avec gestion des accès, sauvegardes, supervision et maintenance système.
+      </p>
+      <ul>
+        <li>Création d’un serveur Windows virtualisé</li>
+        <li>Gestion des comptes et des accès</li>
+        <li>Tests de sauvegardes et restauration</li>
+        <li>Suivi des performances et optimisation</li>
+        <li>Documentation des procédures techniques</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <h3>Lab 02 — Microsoft 365 / Intune / Support poste</h3>
+      <p>
+        Simulation d’un environnement support orienté Microsoft 365 avec configuration de postes,
+        gestion de comptes, stratégies et assistance utilisateur à distance.
+      </p>
+      <ul>
+        <li>Création et administration de comptes Microsoft 365</li>
+        <li>Gestion des licences utilisateurs</li>
+        <li>Enrôlement et configuration de postes via Intune</li>
+        <li>Application de règles et configuration de postes</li>
+        <li>Scénarios de support utilisateur à distance</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<div class="section-divider"></div>
+
+<section id="formation">
+  <h2 class="section-title">Formations</h2>
+  <p class="section-text">
+    Mon parcours de formation renforce mon orientation systèmes, réseaux, support et environnement professionnel. :contentReference[oaicite:4]{index=4}
+  </p>
+
+  <div class="timeline">
+    <div class="timeline-item">
+      <h3>Holberton School</h3>
+      <span class="meta">Octobre 2025 – Novembre 2025</span>
+      <ul>
+        <li>Utilisation de Linux en environnement professionnel</li>
+        <li>Introduction aux outils Git et gestion de versions</li>
+        <li>Travail collaboratif sur projets techniques</li>
+      </ul>
+    </div>
+
+    <div class="timeline-item">
+      <h3>BTS SIO — Option SISR</h3>
+      <span class="meta">2022 – 2024</span>
+      <ul>
+        <li>Administration systèmes et réseaux</li>
+        <li>Windows Server, virtualisation, support utilisateurs</li>
+        <li>Mise en œuvre de la sécurité et gestion d’infrastructure</li>
+      </ul>
+    </div>
+
+    <div class="timeline-item">
+      <h3>BAC STI2D — SIN</h3>
+      <span class="meta">Septembre 2021 à Juin 2022</span>
+      <ul>
+        <li>Administration réseau, virtualisation et gestion de serveurs</li>
+        <li>Sécurité des systèmes</li>
+        <li>Projet Arduino / Solidworks</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<div class="section-divider"></div>
 
 <section id="projects">
-<h2 class="section-title">Projets Web</h2>
-<div class="grid">
-<div class="card"><a href="https://beaujourgael.github.io/template-tech/" target="_blank">Template Tech</a></div>
-<div class="card"><a href="https://beaujourgael.github.io/template-luxe/" target="_blank">Template Luxe</a></div>
-<div class="card"><a href="https://beaujourgael.github.io/template-creative/" target="_blank">Template Creative</a></div>
-<div class="card"><a href="https://beaujourgael.github.io/template-crypto/" target="_blank">Template Crypto</a></div>
-</div>
+  <h2 class="section-title">Projets Web</h2>
+  <p class="section-text">
+    En complément de mon profil technique, je présente aussi plusieurs projets web et interfaces réalisés.
+  </p>
+
+  <div class="grid">
+    <div class="card">
+      <h3>Template Tech</h3>
+      <p>Template au design technologique et moderne.</p>
+      <a href="https://beaujourgael.github.io/template-tech/" target="_blank">Voir le projet</a>
+    </div>
+
+    <div class="card">
+      <h3>Template Luxe</h3>
+      <p>Design premium orienté marque et image haut de gamme.</p>
+      <a href="https://beaujourgael.github.io/template-luxe/" target="_blank">Voir le projet</a>
+    </div>
+
+    <div class="card">
+      <h3>Template Creative</h3>
+      <p>Projet créatif avec identité visuelle dynamique.</p>
+      <a href="https://beaujourgael.github.io/template-creative/" target="_blank">Voir le projet</a>
+    </div>
+
+    <div class="card">
+      <h3>Template Crypto</h3>
+      <p>Landing page inspirée d’un univers digital et innovant.</p>
+      <a href="https://beaujourgael.github.io/template-crypto/" target="_blank">Voir le projet</a>
+    </div>
+  </div>
 </section>
 
-<section>
-<h2 class="section-title">Branding</h2>
-<div class="grid">
-<div class="card"><a href="https://beaujourgael.github.io/Site-branding-synapse/" target="_blank">Synapse</a></div>
-<div class="card"><a href="https://beaujourgael.github.io/Site-brandingraw-humain/" target="_blank">Raw Humain</a></div>
-</div>
-</section>
+<div class="section-divider"></div>
 
-<section>
-<h2 class="section-title">UI / UX</h2>
-<div class="grid">
-<div class="card"><a href="https://beaujourgael.github.io/Site-UI-UX-Landing-page-SaaS/" target="_blank">SaaS Landing</a></div>
-<div class="card"><a href="https://beaujourgael.github.io/Site-UI-UX-Dashboard/" target="_blank">Dashboard UI</a></div>
-</div>
-</section>
+<section id="contact">
+  <h2 class="section-title">Contact</h2>
+  <p class="section-text">
+    Disponible pour un poste, une alternance, un stage ou une collaboration autour du support informatique,
+    de l’administration systèmes et des environnements Microsoft.
+  </p>
 
-<section>
-<h2 class="section-title">Site Actif</h2>
-<div class="grid">
-<div class="card"><a href="https://swetybeauty.fr/" target="_blank">Swety Beauty</a></div>
-</div>
+  <div class="contact-grid">
+    <div class="contact-card">
+      <h3>Email</h3>
+      <a href="mailto:gaelbeaujour@gmail.com">gaelbeaujour@gmail.com</a>
+    </div>
+
+    <div class="contact-card">
+      <h3>Téléphone</h3>
+      <a href="tel:+33744913912">07 44 91 39 12</a>
+    </div>
+
+    <div class="contact-card">
+      <h3>Zone de mobilité</h3>
+      <p>Lille, Valenciennes, Roncq, Douai et périphérie</p>
+    </div>
+
+    <div class="contact-card">
+      <h3>Profils</h3>
+      <p>LinkedIn • GitHub</p>
+    </div>
+  </div>
 </section>
 
 <footer>
-TRK PRIME © 2026 — Expérience Digitale
-<div class="contact">
-📩 TRK.prime971@gmail.com<br>
-📱 WhatsApp : 07 44 91 39 12
-</div>
+Portfolio Beaujour Gael © 2026 — Technicien Support Systèmes & Microsoft 365
 </footer>
 
-<!-- GSAP (CDN) -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
 
 <script>
-// Glow follow
 const glow = document.getElementById('glow');
 document.addEventListener('mousemove', e => {
   glow.style.transform = `translate(${e.clientX -160}px, ${e.clientY -160}px)`;
 });
 
-// Theme (dark/light) with persistence
 const themeToggle = document.getElementById('themeToggle');
-const savedTheme = localStorage.getItem('trk_theme');
-if(savedTheme){
-  document.body.setAttribute('data-theme', savedTheme);
+const savedTheme = localStorage.getItem('portfolio_theme');
+if(savedTheme === 'light'){
+  document.body.setAttribute('data-theme', 'light');
 }
 
 function updateToggleIcon(){
@@ -370,44 +957,41 @@ updateToggleIcon();
 
 themeToggle.addEventListener('click', () => {
   const current = document.body.getAttribute('data-theme') || 'dark';
-  const next = (current === 'light') ? 'dark' : 'light';
+  const next = current === 'light' ? 'dark' : 'light';
+
   if(next === 'dark') document.body.removeAttribute('data-theme');
   else document.body.setAttribute('data-theme', 'light');
-  localStorage.setItem('trk_theme', next);
+
+  localStorage.setItem('portfolio_theme', next);
   updateToggleIcon();
   gsap.fromTo('body', {opacity:0.92}, {opacity:1, duration:0.25, ease:'power2.out'});
 });
 
-// GSAP setup
-if (window.gsap) {
+if(window.gsap){
   gsap.registerPlugin(ScrollTrigger);
 }
 
-// Loader animation (TRK)
 const loader = document.getElementById('loader');
 const loaderLogo = document.getElementById('loaderLogo');
 const loaderBar = document.getElementById('loaderBar');
 
 const tlLoader = gsap.timeline({defaults:{ease:'power3.out'}});
-
 tlLoader
   .fromTo(loaderLogo, {y:18, opacity:0}, {y:0, opacity:1, duration:0.8})
   .to(loaderBar, {width:'92%', duration:1.0, ease:'power2.inOut'}, 0.15)
-  // tiny "glitch" feel
   .to(loaderLogo, {x:-6, duration:0.06, yoyo:true, repeat:5}, 0.65)
   .to(loader, {opacity:0, duration:0.5, pointerEvents:'none'}, 1.55)
   .set(loader, {display:'none'});
 
-// Scroll storytelling (Apple-like)
-// 1) Hero: title + paragraph + CTA entrance
-const hero = document.querySelector('.hero');
 const heroH1 = document.querySelector('.hero h1');
-const heroP = document.querySelector('.hero p');
-const heroBtn = document.querySelector('.hero .btn');
+const heroSubtitle = document.querySelector('.hero .subtitle');
+const heroButtons = document.querySelector('.hero-buttons');
+const heroBadges = document.querySelector('.hero-badges');
+const heroCard = document.querySelector('.hero-card');
 
-gsap.set([heroH1, heroP, heroBtn], {opacity:0, y:18});
+gsap.set([heroH1, heroSubtitle, heroButtons, heroBadges, heroCard], {opacity:0, y:20});
 
-gsap.to([heroH1, heroP, heroBtn], {
+gsap.to([heroH1, heroSubtitle, heroBadges, heroButtons, heroCard], {
   opacity:1,
   y:0,
   duration:0.8,
@@ -416,11 +1000,11 @@ gsap.to([heroH1, heroP, heroBtn], {
   delay:0.15
 });
 
-// 2) Sections: titles slide + cards stagger on enter
 const sections = document.querySelectorAll('section');
 sections.forEach((sec) => {
   const title = sec.querySelector('.section-title');
-  const cards = sec.querySelectorAll('.card');
+  const text = sec.querySelector('.section-text');
+  const cards = sec.querySelectorAll('.card, .skill-card, .timeline-item, .contact-card');
 
   if(title){
     gsap.fromTo(title, {opacity:0, y:18}, {
@@ -430,13 +1014,25 @@ sections.forEach((sec) => {
       scrollTrigger:{
         trigger: sec,
         start:'top 75%',
-        end:'top 30%',
         toggleActions:'play none none reverse'
       }
     });
   }
 
-  if(cards && cards.length){
+  if(text){
+    gsap.fromTo(text, {opacity:0, y:16}, {
+      opacity:1,
+      y:0,
+      duration:0.6,
+      scrollTrigger:{
+        trigger: sec,
+        start:'top 72%',
+        toggleActions:'play none none reverse'
+      }
+    });
+  }
+
+  if(cards.length){
     gsap.fromTo(cards, {opacity:0, y:22, scale:0.98}, {
       opacity:1,
       y:0,
@@ -453,7 +1049,6 @@ sections.forEach((sec) => {
   }
 });
 
-// 3) Subtle parallax drift on the background glow while scrolling
 ScrollTrigger.create({
   start:0,
   end:'max',
@@ -462,7 +1057,6 @@ ScrollTrigger.create({
     glow.style.opacity = (0.10 + p * 0.08).toFixed(3);
   }
 });
-
 </script>
 
 </body>
